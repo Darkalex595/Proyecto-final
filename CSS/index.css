@@ -1,0 +1,96 @@
+
+#titulo{
+    background-color: white;
+    width: 100%;
+    float: left;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    text-align: center;
+}
+#usuario{
+    background-color: white;
+    width: 19%;
+    height: 100%;
+    float: left;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+
+}
+#Actualizacion{
+    background-color: grey;
+    height: 33.3%;
+    width: 80%;
+    float: left;
+    display:flex;
+    justify-content: space-around;
+}
+.Act{
+    width: 40%;
+    height: 90%;
+}
+#Profile{
+    width: 50%;
+    height: 20%;
+    margin-left: 20%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+#recomendaciones{
+    background-color: black;
+    height: 33.3%;
+    width: 80%;
+    float: left;
+    display:flex;
+    justify-content: space-around;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#platillos{
+    background-color: grey;
+    height: 33.3%;
+    width: 80%;
+    float: left;
+    display:flex;
+    justify-content: space-around;
+}
+
+#Titulo-Recom{
+    color: white;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.recom{
+    height: 80%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imag-recom{
+    height: 200px;
+    width: 200px;
+}
+
+.Descripcion{
+    color: white;
+}
+
+.titulo{
+    height: 10%;
+    width: 80%;
+    float: left;
+}
+
+#Tit1{
+    background-color: black;
+}
+
+#Tit2{
+    background-color: grey;
+}
