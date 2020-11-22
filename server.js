@@ -18,7 +18,12 @@ app.get('/user', function (req, res){
     res.sendFile(path.join(__dirname, "infouser.html"));
 })
 
+app.get('/login', function(req, res){
+    res.sendFile(path.join(__dirname, "login.html"));
+})
+
 app.listen(PORT, function(){
     console.log("Server Up on Port 3000")
 })
+
 

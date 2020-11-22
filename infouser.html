@@ -5,14 +5,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Resumen</title>
         <link rel="stylesheet" href="CSS/index.css" type="text/css">
+        <script src="https://kit.fontawesome.com/a1bccbcfc3.js" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            function show(){
+                document.getElementById("usuario").style.width = "20%";
+            }
+            function hide(){
+                document.getElementById("usuario").style.width = "0";
+            }
+        </script>
     </head>
 
     <body>
-        <div id="titulo">
-            <h1>E - Nutri</h1>
-            <h2>Se la mejor version de ti mismo</h2>
+        <div id="top">
+            <div id="navbar">
+                <i class="fas fa-bars fa-2x" onclick="show()"></i>
+            </div>
+            <div id="titulo">
+                <h1>E - Nutri</h1>
+                <h2>Se la mejor version de ti mismo</h2>
+            </div>
         </div>
+
         <div id="usuario">
+            <div id="equis">
+                <i class="far fa-times-circle fa-2x" onclick="hide()"></i>
+            </div>
+            <br>
             <img src = Resources/perfil.png alt="Perfil" id="Profile">
             <h3>Nombre(s):</h3>
             <br>
@@ -25,7 +44,6 @@
             <h3>Edad:</h3>
             <br>
             <h3>Peso ideal:</h3>
-            <br>
         
         </div>
         <div id="Actualizacion">
@@ -36,35 +54,41 @@
                 <h2>Proxima actualizacion</h2>
             </div>
         </div>
-        <div class="titulo" id="Tit1">
-            <h2 id ="Titulo-Recom">Recomendaciones</h2>
-        </div>
-        <div id="recomendaciones">
-            <div class="recom">
-                <img src = Resources/caminar.jpg alt="Caminar", class="imag-recom">
-                <p class="Descripcion">Caminar 20 minutos al dia</p>
+        <div id="TotRecom">
+            <div class="titulo" id="Tit1">
+                <h2 id ="Titulo-Recom">Recomendaciones</h2>
             </div>
-            <div class="recom">
-                <img src = Resources/sentar.jpeg alt="Sentar", class="imag-recom">
-                <p class="Descripcion">No mantenerse inactivo</p>
+            <div id="recomendaciones">
+                <div class="recom">
+                    <img src = Resources/caminar.jpg alt="Caminar", class="imag-recom">
+                    <p class="Descripcion">Caminar 20 minutos al dia</p>
+                </div>
+                <div class="recom">
+                    <img src = Resources/sentar.jpeg alt="Sentar", class="imag-recom">
+                    <p class="Descripcion">No mantenerse inactivo</p>
+                </div>
             </div>
         </div>
-        <div class="titulo" id="Tit2">
-            <h2 id ="Titulo-Platillos">Platos Recomendados</h2>
-        </div>
-        <div id="platillos"> 
-            <div>
-                <h2>Desayuno</h2>
-            </div>
 
-            <div>
-                <h2>Almuerzo</h2>
+        <div id="TotPlat">
+            <div class="titulo" id="Tit2">
+                <h2 id ="Titulo-Platillos">Platos Recomendados</h2>
             </div>
-
-            <div>
-                <h2>Cena</h2>
+            <div id="platillos"> 
+                <div>
+                    <h2>Desayuno</h2>
+                </div>
+    
+                <div>
+                    <h2>Almuerzo</h2>
+                </div>
+    
+                <div>
+                    <h2>Cena</h2>
+                </div>
             </div>
         </div>
+
     </body>
 
 

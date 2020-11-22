@@ -2,33 +2,50 @@
 #titulo{
     background-color: white;
     width: 100%;
-    float: left;
     border-width: 1px;
     border-color: black;
     border-style: solid;
     text-align: center;
 }
 #usuario{
-    background-color: white;
-    width: 19%;
     height: 100%;
-    float: left;
+    width: 0;
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background-color: white; 
+    overflow-x: hidden; 
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+#navbar{
+    display: inline-block;
+}
+#equis{
+    display: inline-block;
+    position: absolute;
+}
+
+#navbar:hover, #equis:hover{
+    background-color: lightgray;
+}
+
+#Actualizacion{
+    background-color: white;
+    height: 33.3%;
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
     border-width: 1px;
     border-color: black;
     border-style: solid;
-
-}
-#Actualizacion{
-    background-color: grey;
-    height: 33.3%;
-    width: 80%;
-    float: left;
-    display:flex;
-    justify-content: space-around;
 }
 .Act{
     width: 40%;
     height: 90%;
+    text-align: center;
 }
 #Profile{
     width: 50%;
@@ -36,36 +53,42 @@
     margin-left: 20%;
     margin-top: 10%;
     margin-bottom: 5%;
+    
+}
+
+.titulo{
+    height: 10%;
+    width: 100%;
+}
+
+#Tit1{
+    background-color: white;
+}
+
+#Titulo-Recom{
+    color: black;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+#TotRecom{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
 }
 
 #recomendaciones{
-    background-color: black;
+    background-color: white;
     height: 33.3%;
-    width: 80%;
-    float: left;
+    width: 100%;
     display:flex;
     justify-content: space-around;
     padding-top: 5%;
     padding-bottom: 5%;
 }
 
-#platillos{
-    background-color: grey;
-    height: 33.3%;
-    width: 80%;
-    float: left;
-    display:flex;
-    justify-content: space-around;
-}
-
-#Titulo-Recom{
-    color: white;
-    margin-left: 5%;
-    margin-top: 2%;
-}
-
 .recom{
-    height: 80%;
+    height: 100%;
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -78,19 +101,38 @@
 }
 
 .Descripcion{
-    color: white;
+    color: black;
 }
 
-.titulo{
-    height: 10%;
-    width: 80%;
-    float: left;
+#TotPlat{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
 }
 
-#Tit1{
-    background-color: black;
+#Titulo-Platillos{
+    color: black;
+    margin-left: 5%;
+    margin-top: 2%;
 }
 
 #Tit2{
-    background-color: grey;
+    background-color: white;
+}
+
+#platillos{
+    background-color: white;
+    height: 33.3%;
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
+}
+
+
+.fa-bars{
+    
+}
+
+.fa-times-circle{
+
 }
