@@ -14,9 +14,8 @@
     z-index: 1; 
     top: 0;
     left: 0;
-    background-color: white; 
+    background-color: rgb(2,164,200); 
     overflow-x: hidden; 
-    padding-top: 60px;
     transition: 0.5s;
 }
 
@@ -129,10 +128,10 @@
 }
 
 
-.fa-bars{
+/*.fa-bars{
     
 }
 
 .fa-times-circle{
 
-}
+}*/

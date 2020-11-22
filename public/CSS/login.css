@@ -12,11 +12,18 @@ body {
 
 .sidenav {
     height: 100%;
-    background-color: #000;
+    background-color: rgb(2,164,200);
     overflow-x: hidden;
     padding-top: 20px;
 }
 
+/*h2{
+    color: black;
+}
+
+p{
+    color: black
+}*/
 
 .main {
     padding: 0px 10px;
