@@ -1,12 +1,28 @@
+body{
+    margin: 0;
+}
 
-#titulo{
-    background-color: white;
-    width: 100%;
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
+#top{
+    width: 100%;;
+    display: grid;
+    background: linear-gradient(90deg, rgba(224,144,10,1) 37%, rgba(212,110,10,1) 55%);
+}
+
+#titulo_pag{
+    grid-column-start: 5;
     text-align: center;
 }
+
+#options{
+    text-align: center;
+    grid-column-start: 8;
+    grid-column-end: 10;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 #usuario{
     height: 100%;
     width: 0;
@@ -14,38 +30,65 @@
     z-index: 1; 
     top: 0;
     left: 0;
-    background-color: rgb(2,164,200); 
+    background-color: #0088cc; 
     overflow-x: hidden; 
-    transition: 0.5s;
 }
 
 #navbar{
     display: inline-block;
+    grid-column-start: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
 }
+
 #equis{
-    display: inline-block;
+    width: 100%;
     position: absolute;
 }
 
-#navbar:hover, #equis:hover{
+.fa-times-circle{
+    float: right;
+}
+
+.fa-bars:hover, .fa-times-circle:hover{
     background-color: lightgray;
 }
 
 #Actualizacion{
-    background-color: white;
+    background: url('../Resources/nutri2.jpg');
     height: 33.3%;
     width: 100%;
     display:flex;
     justify-content: space-around;
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 .Act{
     width: 40%;
     height: 90%;
     text-align: center;
+    color: white;
 }
+
+#compr-act{
+    color: red;
+}
+
+.dateAct{
+    /*-webkit-text-stroke-width: 0.8px;
+    -webkit-text-stroke-color: black;*/
+    text-shadow: 2px 2px black;
+}
+
+.fa-frown{
+    color: red;
+}
+
 #Profile{
     width: 50%;
     height: 20%;
@@ -60,9 +103,7 @@
     width: 100%;
 }
 
-#Tit1{
-    background-color: white;
-}
+
 
 #Titulo-Recom{
     color: black;
@@ -71,13 +112,12 @@
 }
 
 #TotRecom{
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
+    background: radial-gradient(circle, rgba(14,184,41,1) 37%, rgba(3,119,25,1) 66%);
+    padding-top: 2%;
+    margin-bottom: -2%;
 }
 
 #recomendaciones{
-    background-color: white;
     height: 33.3%;
     width: 100%;
     display:flex;
@@ -92,6 +132,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
 }
 
 .imag-recom{
@@ -101,30 +142,32 @@
 
 .Descripcion{
     color: black;
+    font-size: 20px;
 }
 
 #TotPlat{
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
+    background: url('../Resources/diet2.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    padding-top: 2%;
 }
 
 #Titulo-Platillos{
-    color: black;
+    color: lightgray;
     margin-left: 5%;
     margin-top: 2%;
 }
 
-#Tit2{
-    background-color: white;
-}
-
 #platillos{
-    background-color: white;
     height: 33.3%;
     width: 100%;
     display:flex;
     justify-content: space-around;
+}
+
+.tiempo-comida{
+    color: lightgray;
 }
 
 

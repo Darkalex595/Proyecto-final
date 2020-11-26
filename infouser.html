@@ -17,15 +17,19 @@
     </head>
 
     <body>
-        <div id="top">
+        <header id="top">
             <div id="navbar">
                 <i class="fas fa-bars fa-2x" onclick="show()"></i>
             </div>
-            <div id="titulo">
+            <div id="titulo_pag">
                 <h1>E - Nutri</h1>
                 <h2>Se la mejor version de ti mismo</h2>
             </div>
-        </div>
+            <div id="options">
+                <a href="/" class="Opt">Home</a>
+                <a href="/logout" class="Opt">Logout</a>
+            </div>
+        </header>
 
         <div id="usuario">
             <div id="equis">
@@ -48,15 +52,19 @@
         </div>
         <div id="Actualizacion">
             <div class="Act">
-                <h2>Ultima actualizacion</h2>
+                <h1 class="dateAct">Ultima actualizacion</h1>
+                <h1 class="dateAct">31/03/1998</h1>
             </div>
             <div class="Act">
-                <h2>Proxima actualizacion</h2>
+                <h1 class="dateAct">Proxima actualizacion</h1>
+                <h1 class="dateAct">31/05/1998</h1>
+                <h2 id="compr-act">No se ha hecho la actualizacion</h2>
+                <i class="far fa-frown fa-5x"></i>
             </div>
         </div>
         <div id="TotRecom">
             <div class="titulo" id="Tit1">
-                <h2 id ="Titulo-Recom">Recomendaciones</h2>
+                <h1 id ="Titulo-Recom">Recomendaciones</h1>
             </div>
             <div id="recomendaciones">
                 <div class="recom">
@@ -69,22 +77,21 @@
                 </div>
             </div>
         </div>
-
         <div id="TotPlat">
             <div class="titulo" id="Tit2">
                 <h2 id ="Titulo-Platillos">Platos Recomendados</h2>
             </div>
             <div id="platillos"> 
                 <div>
-                    <h2>Desayuno</h2>
+                    <h2 class="tiempo-comida">Desayuno</h2>
                 </div>
     
                 <div>
-                    <h2>Almuerzo</h2>
+                    <h2 class="tiempo-comida">Almuerzo</h2>
                 </div>
     
                 <div>
-                    <h2>Cena</h2>
+                    <h2 class="tiempo-comida">Cena</h2>
                 </div>
             </div>
         </div>

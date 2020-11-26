@@ -1,6 +1,5 @@
 body {
-    background: url('../Resources/dieta_fondo.jpg');
-   background-size: 100% 100%;
+    background: url('../Resources/diet3.jpg');
 }
 
 *[role="form"] {
@@ -20,4 +19,9 @@ body {
    text-align: center;
    text-transform: uppercase;
    letter-spacing: 4px;
+}
+
+.container {
+   margin-top: 2%;
+   margin-bottom: 2%;   
 }
