@@ -15,9 +15,9 @@ function verifyToken(req, res, next){
                 return res.redirect('/login');
             }
             else{
-
                 req.fname = decoded.nombre;
                 req.lname = decoded.apellido;
+                req.email = decoded.email;
                 req.bday = decoded.cumpleaños;
                 req.height = decoded.altura;
                 req.weight = decoded.peso;
@@ -27,5 +27,6 @@ function verifyToken(req, res, next){
         })
     } 
 }
+
 
 module.exports = verifyToken;

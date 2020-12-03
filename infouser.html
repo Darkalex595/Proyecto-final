@@ -6,24 +6,16 @@
         <title>Resumen</title>
         <link rel="stylesheet" href="CSS/info.css" type="text/css">
         <script src="https://kit.fontawesome.com/a1bccbcfc3.js" crossorigin="anonymous"></script>
-        <script type="text/javascript">
-            function show(){
-                document.getElementById("usuario").style.width = "20%";
-            }
-            function hide(){
-                document.getElementById("usuario").style.width = "0";
-            }
-        </script>
-    </head>
+        <script src="https://code.jquery.com/jquery.js"></script>
 
     <body>
         <header id="top">
             <div id="navbar">
-                <i class="fas fa-bars fa-2x" onclick="show()"></i>
+                <i class="fas fa-bars fa-lg" onclick="show()"></i>
             </div>
             <div id="titulo_pag">
-                <h1>E - Nutri</h1>
-                <h2>Se la mejor version de ti mismo</h2>
+                <h1 id="TitlePag">E - Nutri</h1>
+                <h2 id="SubTitlePag">Se la mejor version de ti mismo</h2>
             </div>
             <div id="options">
                 <a href="/" class="Opt">Home</a>
@@ -36,30 +28,14 @@
                 <i class="far fa-times-circle fa-2x" onclick="hide()"></i>
             </div>
             <br>
-            <img src = Resources/perfil.png alt="Perfil" id="Profile">
-            <h3>Nombre(s):</h3>
-            <br>
-            <h3>Apellido(s):</h3>
-            <br>
-            <h3>Altura:</h3>
-            <br>
-            <h3>Peso Actual:</h3>
-            <br>
-            <h3>Edad:</h3>
-            <br>
-            <h3>Peso ideal:</h3>
-        
+            <img src = Resources/perfil.png alt="Perfil" id="Profile">  
         </div>
         <div id="Actualizacion">
-            <div class="Act">
+            <div class="Act" id="Ult-Act">
                 <h1 class="dateAct">Ultima actualizacion</h1>
-                <h1 class="dateAct">31/03/1998</h1>
             </div>
-            <div class="Act">
+            <div class="Act" id="Prox-Act">
                 <h1 class="dateAct">Proxima actualizacion</h1>
-                <h1 class="dateAct">31/05/1998</h1>
-                <h2 id="compr-act">No se ha hecho la actualizacion</h2>
-                <i class="far fa-frown fa-5x"></i>
             </div>
         </div>
         <div id="TotRecom">
@@ -98,5 +74,174 @@
 
     </body>
 
+    <script type="text/javascript">
+
+        function show(){
+            document.getElementById("usuario").style.width = "25%";
+        }
+        function hide(){
+            document.getElementById("usuario").style.width = "0";
+        }
+
+    function infoUsuario(){
+        $.ajax({url: "/api/userinfo", method: "GET"})
+        .then(function(data){
+
+            BdayString = data.bday;
+            BdayString = BdayString.substring(0, 10);
+            Bday = new Date(BdayString.replace(/-/g, '\/'));
+
+
+            //var Meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+            var Altura = data.height;
+            Altura2 = Altura/100;
+
+            var Fecha = new Date();
+            var Edad = Fecha.getFullYear() - Bday.getFullYear();
+
+            var Peso = data.weight;
+            var PesoIdeal = Altura - 100 + ((Edad/10)*0.9);
+
+            var FechaActString = data.lact;
+            FechaActString = FechaActString.substring(0, 10);
+            FechaAct = new Date(FechaActString.replace(/-/g, '\/'));
+            var month = FechaAct.getMonth();
+
+            
+            if(month < 10){
+                var nextMonth = month + 2;
+            }
+            else{
+                if(month == 10){
+                    var nextMonth = 0;
+                }
+                else
+                if(month==11){
+                    var nextMonth = 1;
+                }
+            }
+
+            var ProxDate = FechaAct.getDate();
+
+            if(ProxDate == 31){
+                if(nextMonth == 1){
+                    ProxDate = 27;
+                }
+                else if(nextMonth==3 || nextMonth == 5 || nextMonth == 8 || nextMonth == 10){
+                    ProxDate = 30;
+                }
+            }
+            else if(ProxDate == 30){
+                if(nextMonth == 1){
+                    ProxDate = 27;
+                }
+            }
+
+            if(nextMonth == 0 || nextMonth == 1){
+                var nextYear = FechaAct.getFullYear() + 1;
+            }
+
+            nextMonth = nextMonth + 1;
+
+            var ProxActString = ProxDate.toString() + "/" + nextMonth.toString() + "/" + nextYear.toString();
+
+            if(month < 12){
+                month = month+1;
+            }
+            else{
+                month = 0;
+            }
+
+            var Year = FechaAct.getFullYear();
+            var Fecha2 = FechaAct.getDate();
+
+            if(Year == nextYear){
+                if(month == nextMonth){
+                    if(Fecha2 <= ProxDate){
+                        var Hecho = true;
+                    }else{
+                        var Hecho = false;
+                    }
+                }
+                else{
+                    var Hecho = true;
+                }
+            }else{
+                var Hecho = true;
+            }
+
+
+            var InfoUsuario = $("#usuario");
+            InfoUsuario.append(
+                $("<h3>", {"class": 'infoUsuario'}).text("Nombre(s): " + data.fname),
+                $("<h3>", {"class": 'infoUsuario'}).text("Apellido: " + data.lname),
+                //$("<h3>").text("Cumpleaños: " + Bday.getDate() + " de " + (Meses[Bday.getMonth()]) + " de " + Bday.getFullYear()),
+                $("<h3>", {"class": 'infoUsuario'}).text("Edad: " + Edad + " años"),
+                $("<br>"),
+                $("<h3>", {"class": 'infoUsuario'}).text("Altura: " + Altura2 + " metros"),
+                $("<h3>", {"class": 'infoUsuario'}).text("Peso: " + Peso + " kg"),
+                $("<h3>", {"class": 'infoUsuario'}, {"id": 'peso-ideal'}).text("Peso Ideal: " + PesoIdeal + " kg"),
+                $("<br>"),
+                $("<div>", {"id": 'BotOpc'})
+            );
+
+            var BotonOpcion = $("#BotOpc");
+
+            BotonOpcion.append(
+                $("<button>", {"id":'botAct', click: function(){
+                    var newPeso = prompt("Actualice su nuevo peso");
+                    var nuevaFecha = new Date();
+
+                    if(newPeso != "" && newPeso != null){
+                        var Actualizacion = {
+                        Email: data.email,
+                        Peso: newPeso,
+                        Fecha: nuevaFecha
+                    }
+
+                    $.post("/api/actualizar", Actualizacion, function(data){
+                        location.reload(true);
+                        alert("Peso cambiado");
+                    });
+                    }
+                    else{
+                        alert("Peso no puede ser nulo");
+                    }
+
+                    
+                }}).text("Actualizar")
+            )
+
+            var divAct = $("#Ult-Act");
+            divAct.append(
+                $("<h1>", {"class": 'dateAct'}).text(FechaAct.getDate() + "/" + month + "/" + FechaAct.getFullYear())
+            );
+
+            divAct = $("#Prox-Act");
+            divAct.append(
+                $("<h1>", {"class": 'dateAct'}).text(ProxActString)
+            )
+
+            if(!Hecho){
+                divAct.append(
+                    $("<h2>" , {"id": "compr-act"}).text("No se ha hecho la actualizacion del peso"),
+                    $("<i>", {"class":"far fa-frown fa-5x"})
+                )
+            }
+            else if(Hecho){
+                divAct.append(
+                    $("<h2>" , {"id": "act-hecha"}).text("Peso actualizado"),
+                    $("<i>", {"class":"fas fa-smile-beam fa-5x"})
+                )
+            }
+
+         });
+    }
+
+    infoUsuario();
+
+    </script>
+</head>
 
 </html>

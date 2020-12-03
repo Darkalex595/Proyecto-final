@@ -13,6 +13,16 @@ body{
     text-align: center;
 }
 
+#TitlePag{
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+#SubTitlePag{
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
 #options{
     text-align: center;
     grid-column-start: 8;
@@ -48,6 +58,12 @@ body{
     position: absolute;
 }
 
+#BotOpc{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .fa-times-circle{
     float: right;
 }
@@ -77,6 +93,14 @@ body{
 
 #compr-act{
     color: red;
+}
+
+#act-hecha{
+    color: green;
+}
+
+.fa-smile-beam{
+    color: green;
 }
 
 .dateAct{
@@ -109,6 +133,7 @@ body{
     color: black;
     margin-left: 5%;
     margin-top: 2%;
+    text-shadow: 2px 2px grey;
 }
 
 #TotRecom{
@@ -157,6 +182,7 @@ body{
     color: lightgray;
     margin-left: 5%;
     margin-top: 2%;
+    text-shadow: 2px 2px black;
 }
 
 #platillos{
@@ -168,13 +194,77 @@ body{
 
 .tiempo-comida{
     color: lightgray;
+    text-shadow: 2px 2px black;
 }
 
 
-/*.fa-bars{
+@media screen and (max-width: 767px){
+    #TitlePag{
+        font-size: 30px;
+    }
+
+    #SubTitlePag{
+        font-size: 20px;
+    }
+
+    #options{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 17px;
+    }
     
+    #Profile{
+    display: none;
+    }
+
+    .infoUsuario{
+        font-size: 18px;
+        margin-right: 2%;
+    }
 }
 
-.fa-times-circle{
+@media screen and (max-width: 500px) {
+    
+    #TitlePag{
+        font-size: 25px;
+    }
 
-}*/
+    #SubTitlePag{
+        font-size: 15px;
+    }
+
+    #options{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 12px;
+    }
+
+    #Profile{
+        display: none;
+    }
+
+    #Actualizacion{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .infoUsuario{
+        font-size: 15px;
+        margin-right: 2%;
+    }
+
+    #recomendaciones{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #platillos{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -6,10 +6,10 @@ const cookieParser = require('cookie-parser');
 const User = require('./model/User');
 const jwt = require("jsonwebtoken");
 const verify = require('./middleware/verifyAcecess');
+const verify2 = require('./middleware/verify2')
 const config = require("./config");
 
 const app = express();
-
 
 mongoose.connect('mongodb://localhost/e-snutri-users',{
     useNewUrlParser:true,
@@ -31,20 +31,48 @@ app.get('/',  function (req, res){
 })
 
 app.get('/user', verify, function (req, res){
+
     res.sendFile(path.join(__dirname, "infouser.html"));
 })
 
-app.get('/login', function(req, res){
+app.get('/login', verify2, function(req, res){
     res.sendFile(path.join(__dirname, "login.html"));
 })
 
-app.get('/register', function(req, res){
+app.get('/register', verify2, function(req, res){
     res.sendFile(path.join(__dirname, "register.html"));
 })
 
 app.get('/logout', function(req, res){
     res.clearCookie("token");
     res.redirect('/');
+})
+
+app.get('/refresh', verify, async function(req, res){
+
+    email = req.email;
+    var usuario = await User.findOne({email:email});
+    console.log(usuario);
+    res.clearCookie("token");
+    const token = jwt.sign({nombre:usuario.fname, apellido:usuario.lname, email:usuario.email, cumpleaños:usuario.bday, altura:usuario.height, peso:usuario.weight, act:usuario.last_date}, config.secret,{expiresIn: "1h"});
+    console.log(token);
+    res.cookie("token", token, {httpOnly: true});
+    res.redirect('/user');
+})
+
+app.get('/api/userinfo', verify, function(req, res){
+    var Usuario = {
+        email: req.email,
+        fname: req.fname,
+        lname: req.lname,
+        bday: req.bday,
+        height: req.height,
+        weight: req.weight,
+        lact: req.lact
+    };
+
+    //console.log(Usuario);
+    return res.json(Usuario);
 })
 
 app.post('/register', async function(req, res){
@@ -60,6 +88,7 @@ app.post('/login', async function(req, res){
 
     const usuario = await User.findOne({email:email});
 
+
     console.log(usuario);
 
     if(!usuario){
@@ -69,8 +98,8 @@ app.post('/login', async function(req, res){
         const valid = await usuario.validatePassword(password);
 
         if(valid){
-            console.log("Contraseña valida");
-            const token = jwt.sign({nombre:usuario.fname, apellido:usuario.lname, cumpleaños:usuario.bday, altura:usuario.height, peso:usuario.weight, act:usuario.last_date}, config.secret,{expiresIn: "1h"});
+            /*console.log("Contraseña valida");*/
+            const token = jwt.sign({nombre:usuario.fname, apellido:usuario.lname, email:usuario.email, cumpleaños:usuario.bday, altura:usuario.height, peso:usuario.weight, act:usuario.last_date}, config.secret,{expiresIn: "1h"});
             console.log(token);
             res.cookie("token", token, {httpOnly: true});
             res.redirect('/user');
@@ -80,6 +109,15 @@ app.post('/login', async function(req, res){
             res.json('Invalido');
         }
     }
+})
+
+app.post('/api/actualizar', async function(req, res){
+    var Act = req.body;
+
+    await User.updateOne({email: Act.Email}, {weight: Act.Peso});
+    const usuario = await User.findOne({email: Act.Email});
+    res.redirect('/refresh');
+
 })
 
 app.listen(PORT, function(){
